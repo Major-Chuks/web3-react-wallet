@@ -1,8 +1,11 @@
-import React from 'react'
+import React from "react"
 
-import { ConnectionType, getHasMetaMaskExtensionInstalled } from '../connections'
-import { METAMASK_URL } from '../constants'
-import { Option } from './Option'
+import {
+  ConnectionType,
+  getHasMetaMaskExtensionInstalled,
+} from "../connections"
+import { METAMASK_URL } from "../constants"
+import { Option } from "./Option"
 
 type ConnectOptionsParams = {
   activeConnectionType: ConnectionType | null
@@ -20,11 +23,14 @@ export const ConnectionOptions = ({
   function getOptions(isActive: boolean) {
     const hasMetaMaskExtension = getHasMetaMaskExtensionInstalled()
 
-    const isNoOptionActive = !isActive || (isActive && activeConnectionType === null)
+    const isNoOptionActive =
+      !isActive || (isActive && activeConnectionType === null)
 
     const metaMaskOption = hasMetaMaskExtension ? (
       <Option
-        isEnabled={isNoOptionActive || activeConnectionType === ConnectionType.INJECTED}
+        isEnabled={
+          isNoOptionActive || activeConnectionType === ConnectionType.INJECTED
+        }
         isConnected={activeConnectionType === ConnectionType.INJECTED}
         connectionType={ConnectionType.INJECTED}
         onActivate={onActivate}
@@ -38,7 +44,10 @@ export const ConnectionOptions = ({
 
     const coinbaseWalletOption = (
       <Option
-        isEnabled={isNoOptionActive || activeConnectionType === ConnectionType.COINBASE_WALLET}
+        isEnabled={
+          isNoOptionActive ||
+          activeConnectionType === ConnectionType.COINBASE_WALLET
+        }
         isConnected={activeConnectionType === ConnectionType.COINBASE_WALLET}
         connectionType={ConnectionType.COINBASE_WALLET}
         onActivate={onActivate}
@@ -48,7 +57,10 @@ export const ConnectionOptions = ({
 
     const walletConnectOption = (
       <Option
-        isEnabled={isNoOptionActive || activeConnectionType === ConnectionType.WALLET_CONNECT}
+        isEnabled={
+          isNoOptionActive ||
+          activeConnectionType === ConnectionType.WALLET_CONNECT
+        }
         isConnected={activeConnectionType === ConnectionType.WALLET_CONNECT}
         connectionType={ConnectionType.WALLET_CONNECT}
         onActivate={onActivate}

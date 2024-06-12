@@ -1,8 +1,12 @@
-import { Web3ReactProvider } from '@web3-react/core'
-import { Connector } from '@web3-react/types'
-import React, { ReactNode, useEffect } from 'react'
+import { Web3ReactProvider } from "@web3-react/core"
+import { Connector } from "@web3-react/types"
+import React, { ReactNode, useEffect } from "react"
 
-import { ConnectionType, getConnection, PRIORITIZED_CONNECTORS } from '../connections'
+import {
+  ConnectionType,
+  getConnection,
+  PRIORITIZED_CONNECTORS,
+} from "../connections"
 
 async function connect(connector: Connector) {
   try {
@@ -28,7 +32,10 @@ export const Web3ContextProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <Web3ReactProvider
-      connectors={Object.values(PRIORITIZED_CONNECTORS).map((connector) => [connector.connector, connector.hooks])}
+      connectors={Object.values(PRIORITIZED_CONNECTORS).map((connector) => [
+        connector.connector,
+        connector.hooks,
+      ])}
     >
       {children}
     </Web3ReactProvider>

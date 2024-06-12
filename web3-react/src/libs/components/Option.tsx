@@ -1,6 +1,11 @@
-import React from 'react'
+import React from "react"
 
-import { ConnectionType, getConnection, tryActivateConnector, tryDeactivateConnector } from '../connections'
+import {
+  ConnectionType,
+  getConnection,
+  tryActivateConnector,
+  tryDeactivateConnector,
+} from "../connections"
 
 export const Option = ({
   isEnabled,
@@ -17,7 +22,9 @@ export const Option = ({
 }) => {
   const onClick = async () => {
     if (isConnected) {
-      const deactivation = await tryDeactivateConnector(getConnection(connectionType).connector)
+      const deactivation = await tryDeactivateConnector(
+        getConnection(connectionType).connector
+      )
       // undefined means the deactivation failed
       if (deactivation === undefined) {
         return
@@ -26,7 +33,9 @@ export const Option = ({
       return
     }
 
-    const activation = await tryActivateConnector(getConnection(connectionType).connector)
+    const activation = await tryActivateConnector(
+      getConnection(connectionType).connector
+    )
     if (!activation) {
       return
     }
@@ -37,7 +46,7 @@ export const Option = ({
   return (
     <div>
       <button onClick={onClick} disabled={!isEnabled}>{`${
-        isConnected ? 'Disconnect' : 'Connect'
+        isConnected ? "Disconnect" : "Connect"
       } ${connectionType}`}</button>
     </div>
   )
